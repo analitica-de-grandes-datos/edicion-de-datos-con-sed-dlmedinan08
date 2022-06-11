@@ -51,6 +51,6 @@ sed -i 's/-\([0-9]\)\-/-0\1-/' preprocess1.csv
 sed -i 's/-\([0-9][0-9]\)\,/-20\1,/' preprocess1.csv
 sed -i 's/^\([0-9]\)\-/0\1-/' preprocess1.csv
 sed -i 's/,$/,\\\N/' preprocess1.csv
-sed -i 's/\([0-9][0-9]\)-\([0-9][0-9]\)-\([0-9]*\),/\3-\2-\1,/' preprocess1.csv
+sed 's/\([0-9][0-9]\)-\([0-9][0-9]\)-\([0-9]*\),/\3-\2-\1,/' preprocess1.csv > output.csv
 
-cat preprocess1.csv
+cat output.csv
