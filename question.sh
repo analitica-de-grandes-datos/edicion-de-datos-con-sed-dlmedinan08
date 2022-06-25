@@ -41,7 +41,7 @@
 #
 #  >>> Escriba su codigo a partir de este punto <<<
 #
-cat $1 \
+cat data.csv \
 | sed 's/,/./g' \
 | sed 's/;/,/g' \
 | sed 's/[a-z]/\U&/g' \
