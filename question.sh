@@ -41,7 +41,6 @@
 #
 #  >>> Escriba su codigo a partir de este punto <<<
 #
-
 cat $1 \
 | sed 's/,/./g' \
 | sed 's/;/,/g' \
