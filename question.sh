@@ -41,16 +41,15 @@
 #
 #  >>> Escriba su codigo a partir de este punto <<<
 #
-cat data.csv \
-|   sed 's/\/\([0-9][0-9]\);/\/20\1;/' \
-|   sed 's/\([0-9]*\)\/\([0-9]*\)\/\([0-9]*\);/\3\/\2\/\1;/' \
-|   sed 's/\/\([0-9]\)\//\/0\1\//' \
-|   sed 's/\/\([0-9]\);/\/0\1;/' \
-|   sed 's/,/\./g' \
-|   sed 's/;/,/g' \
-|   sed 's/,,/,\N,/g' \
-|   sed 's/n/N/g' \
-|   sed 's/,N/,\\N/g' \
-|   sed 's/.*/\U&/' \
-|   sed 's/\//-/g' \
-|   sed 's/,$/,\\N/g'
+sed 's/,/./g' data.csv > preprocess1.csv
+sed -i 's/;/,/g' preprocess1.csv
+sed -i 's/[a-z]/\U&/g' preprocess1.csv
+sed -i 's/,N/,\\N/g' preprocess1.csv
+sed -i 's/,,/,\\N,/g' preprocess1.csv
+sed -i 's/\//-/g' preprocess1.csv
+sed -i 's/-\([0-9]\)\-/-0\1-/' preprocess1.csv
+sed -i 's/-\([0-9][0-9]\)\,/-20\1,/' preprocess1.csv
+sed -i 's/^\([0-9]\)\-/0\1-/' preprocess1.csv
+sed -i 's/,$/,\\\N/' preprocess1.csv
+sed -i 's/\([0-9][0-9]\)-\([0-9][0-9]\)-\([0-9]*\),/\3-\2-\1,/' preprocess1.csv
+cat preprocess1.csv > output.csv
