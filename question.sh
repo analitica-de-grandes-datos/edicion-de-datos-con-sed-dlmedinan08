@@ -41,3 +41,4 @@
 #
 #  >>> Escriba su codigo a partir de este punto <<<
 #
+cat data.csv | sed 's/,/./g' | sed 's/;/,/g' | sed 's/[a-z]/\U&/g' | sed 's/,N/,\\N/g' | sed 's/,,/,\\N,/g' | sed 's/\//-/g' | sed 's/-\([0-9]\)\-/-0\1-/' | sed 's/-\([0-9][0-9]\)\,/-20\1,/' | sed 's/^\([0-9]\)\-/0\1-/' | sed 's/,$/,\\\N/' | sed 's/\([0-9][0-9]\)-\([0-9][0-9]\)-\([0-9]*\),/\3-\2-\1,/'
