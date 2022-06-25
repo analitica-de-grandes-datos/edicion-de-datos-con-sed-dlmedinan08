@@ -41,7 +41,8 @@
 #
 #  >>> Escriba su codigo a partir de este punto <<<
 #
-sed 's/,/./g' data.csv > preprocess1.csv
+cat data.csv > preprocess1.csv
+sed -i 's/,/./g' preprocess1.csv
 sed -i 's/;/,/g' preprocess1.csv
 sed -i 's/[a-z]/\U&/g' preprocess1.csv
 sed -i 's/,N/,\\N/g' preprocess1.csv
